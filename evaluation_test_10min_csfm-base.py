@@ -29,26 +29,20 @@ save_dir_path = signalmcmed_dir_path + "/evaluation_test_10min_csfm-base"
 os.makedirs(save_dir_path, exist_ok=True)
 
 
-if not debug:
-    train_props = [1.0, 0.75, 0.50, 0.25, 0.10, 0.05]
-else:
-    train_props = [0.10, 0.05]
-
-if not debug:
-    number_of_runs = 5
-else:
-    number_of_runs = 2
-
-
 seed = 42
 rng = np.random.RandomState(seed=seed)
 
 if not debug:
+    train_props = [1.0, 0.75, 0.50, 0.25, 0.10, 0.05]
+    number_of_runs = 5
     alpha_values = np.logspace(-6, 6, 31)
     c_values = np.logspace(-4, 4, 25)
+    
 else:
+    train_props = [0.10, 0.05]
     alpha_values = [1.0]
     c_values = [1.0]
+    number_of_runs = 2
 
 
 with open(signalmcmed_dir_path + "/extract-features_csfm-base_10min_ecg.pkl", "rb") as f:
