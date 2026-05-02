@@ -8,11 +8,14 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import r2_score
+# spearmanr：对数据排序后，计算 Pearson
 from scipy.stats import pearsonr, spearmanr
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, average_precision_score
 
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
+# 分类器：岭回归、逻辑回归
+
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import LogisticRegression
 
