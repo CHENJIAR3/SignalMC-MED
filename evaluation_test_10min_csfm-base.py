@@ -19,6 +19,14 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import LogisticRegression
 
+# 1.加载预处理好的特征（ECG、PPG、两者拼接）和对应的患者ID（CSN）。
+# 2.按时间划分训练/验证/测试集（从CSV读取）。
+# 3.对每个训练数据比例（从5%到100%）和多次运行（默认5次）：
+# 4.从训练集中随机抽样（有放回）指定比例的子集。
+# 5.在验证集上用Ridge回归调优α（年龄等回归任务），用逻辑回归调优C（性别、疾病分类等任务）。
+# 6.用验证集选出的最佳超参数在测试集上评估20个任务（年龄、性别、急诊处置、8项实验室指标回归、9类疾病诊断分类等）。
+# 7.记录每次运行的性能指标（Pearson相关系数、MAE、AUROC、AUPRC）。
+# 8.汇总多次运行的结果，输出平均值±标准差，并保存结果（pickle和图像）。
 
 debug = False
 
